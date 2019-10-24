@@ -1,0 +1,245 @@
+<!doctype html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>welcome 智能花园！</title>
+    <link rel="stylesheet" href="{% static 'style/simple-line-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'style/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'style/styles.css' %}">
+     <style type="text/css">  
+         .a{
+            margin:8px;
+         }
+         img:hover{
+            transform: scale(0.5);
+         }
+    </style> 
+</head>
+<body class="sidebar-fixed header-fixed" >
+<div class="page-wrapper">
+    <nav class="navbar page-header">
+        <a href="http://127.0.0.1:8000/#" class="btn btn-link sidebar-mobile-toggle d-md-none mr-auto">
+            <i class="fa fa-bars"></i>
+        </a>
+
+        <a class="navbar-brand" href="#">
+            <img src="{% static 'image/logo.png'%}" alt="logo">
+        </a>
+
+            <a href="http://127.0.0.1:8000/#" class="btn btn-link sidebar-toggle d-md-down-none" id="first">
+            ==
+        </a>
+
+
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item d-md-down-none">
+                <a href="http://127.0.0.1:8000/#">
+                    <i class="fa fa-bell"></i>
+                    <span class="badge badge-pill badge-danger">5</span>
+                </a>
+            </li>
+
+            <li class="nav-item d-md-down-none">
+                <a href="http://127.0.0.1:8000/#">
+                    <i class="fa fa-envelope-open"></i>
+                    <span class="badge badge-pill badge-danger">5</span>
+                </a>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="{% static 'image/avatar-1.png'%}" class="avatar avatar-sm" alt="logo">
+                    <span class="small ml-1 d-md-down-none">{{user}}</span>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right">
+                    <div class="dropdown-header">账户</div>
+
+                   <!--  <a href="http://127.0.0.1:8000/blank" class="dropdown-item">
+                        <i class="fa fa-user"></i> 个人资料
+                    </a>
+
+                    <a href="http://127.0.0.1:8000/#" class="dropdown-item">
+                        <i class="fa fa-envelope"></i> 消息
+                    </a>
+
+                    <div class="dropdown-header">设置</div> -->
+
+                    <a href="http://127.0.0.1:8000/#" class="dropdown-item">
+                        <i class="fa fa-bell"></i> 通知
+                    </a>
+
+                   <!--  <a href="http://127.0.0.1:8000/invoice" class="dropdown-item">
+                        <i class="fa fa-wrench"></i> 个人设置
+                    </a> -->
+
+                    <a href="http://127.0.0.1:8000/#" class="dropdown-item">
+                        <i class="fa fa-lock"></i> 注销
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="main-container">
+        <div class="sidebar">
+            <nav class="sidebar-nav">
+                <ul class="nav">
+                    <li class="nav-title">导航栏</li>
+
+                    <li class="nav-item">
+                       <a href="http://127.0.0.1:8000/index" class="nav-link active">
+                            <i class="icon icon-speedometer"></i> 综合数据
+                        </a>
+                    </li>
+
+                    <li class="nav-item nav-dropdown">
+                       <a href="http://127.0.0.1:8000/#" class="nav-link nav-dropdown-toggle">
+                            <i class="icon icon-energy"></i> 植物管理 <i class="fa fa-caret-left"></i>
+                        </a>
+
+                        <ul class="nav-dropdown-items">
+                            <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/chartjs" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-energy"></i> 植物简介
+                                </a>
+                            </li>
+
+                           <!--  <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/alerts" class="nav-link">
+                                    <i class="icon icon-energy"></i> 影像展示
+                                </a>
+                            </li> -->
+
+                            <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/buttons" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-energy"></i> 智能调节
+                                </a>
+                            </li>
+
+                            <!-- <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/cards" class="nav-link">
+                                    <i class="icon icon-energy"></i> 智能光控
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/modals" class="nav-link">
+                                    <i class="icon icon-energy"></i> 智能温控
+                                </a>
+                            </li> -->
+
+                            <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/tabs" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-energy"></i> 实时监控
+                                </a>
+                            </li>
+
+                            <!-- <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/progress-bars" class="nav-link">
+                                    <i class="icon icon-energy"></i> 人工管理
+                                </a>
+                            </li> -->
+                        </ul>
+                    </li>
+
+                    <li class="nav-item nav-dropdown">
+                       <a href="http://127.0.0.1:8000/#" class="nav-link nav-dropdown-toggle">
+                            <i class="icon icon-puzzle"></i> 系统设置 <i class="fa fa-caret-left"></i>
+                        </a>
+
+                        <ul class="nav-dropdown-items">
+
+                            <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/pepei" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-puzzle"></i> 箱子匹配
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/settings" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-puzzle"></i> 联系我们
+                                </a>
+                            </li>
+
+                            <!-- <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/zhiwuzhonglei" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-puzzle"></i> 植物种类
+                                </a>
+                            </li> -->
+                        </ul>
+                    </li>
+
+                    <!-- <li class="nav-item">
+                       <a href="http://127.0.0.1:8000/#" class="nav-link">
+                            <i class="icon icon-grid"></i> 个人设置
+                        </a>
+                    </li>
+
+                    <li class="nav-title">更多</li> -->
+
+                    <li class="nav-item nav-dropdown">
+                       <a href="http://127.0.0.1:8000/#" class="nav-link nav-dropdown-toggle">
+                            <i class="icon icon-umbrella"></i> 个人主页 <i class="fa fa-caret-left"></i>
+                        </a>
+
+                        <ul class="nav-dropdown-items">
+
+                           <!--  <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/login" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-umbrella"></i> 登录
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/register" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-umbrella"></i> 注册
+                                </a>
+                            </li> -->
+                            <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/#" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-umbrella"></i> 通知
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/blank" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-umbrella"></i> 个人资料
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/user" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-umbrella"></i> 切换用户
+                                </a>
+                            </li>
+
+                            <!-- <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/invoice" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-umbrella"></i> 个人设置
+                                </a>
+                            </li> -->
+
+                            <!-- <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/settings" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-umbrella"></i> 联系我们
+                                </a>
+                            </li> -->
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+<script src={% static 'javascript/jquery.min.js' %}></script>
+<script src={% static 'javascript/popper.min.js' %}></script>
+<script src={% static 'javascript/bootstrap.min.js' %}></script>
+<script src={% static 'javascript/bootstrapValidator.min.js' %}></script>
+<script src={% static 'javascript/chart.min.js' %}></script>
+<script src={% static 'javascript/carbon.js' %}></script>
+<script src={% static 'javascript/demo.js' %}></script>
+</body>
+</html>

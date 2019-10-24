@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Welcome 智能花园！</title>
+    <link rel="stylesheet" href="/static/style/simple-line-icons.css">
+    <link rel="stylesheet" href="/static/style/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/static/style/styles.css">
+       <style type="text/css">  
+         .a{
+            margin:8px;
+         }
+         .dropbtn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            margin:10px;
+            font-size: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+         /* 容器 <div> - 需要定位下拉内容 */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+         /* 下拉内容 (默认隐藏) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        }
+
+         /* 下拉菜单的链接 */
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+         /* 鼠标移上去后修改下拉菜单链接颜色 */
+        .dropdown-content a:hover {background-color: red;}
+
+         /* 在鼠标移上去后显示下拉菜单 */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+         /* 当下拉内容显示后修改下拉按钮的背景颜色 */
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
+        }
+        .bb{
+            background-color:red;
+        }
+    </style> 
+    <style>
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.button1 {
+    background-color: white; 
+    color: black; 
+    border: 1px solid #000;
+    border-radius: 8px;
+}
+
+.button1:hover {
+    background-color: #4CAF50;
+    color: white;
+    border-color: #4CAF50;
+    border-radius: 8px;
+}
+
+.button2 {
+    background-color: white; 
+    color: black; 
+    border: 1px solid #000;
+    border-radius: 8px;
+}
+
+.button2:hover {
+    background-color: #4CAF50;
+    color: white;
+    border-color: #4CAF50;
+    border-radius: 8px;
+}
+.anniu{
+    width:900px;
+    height:60px;
+    float:left;
+}
+.b1{
+    position: relative;
+    left:150px;
+}
+.b2{
+    position: relative;
+    left:600px;
+}
+.xuanzhe{
+    width:1000px;
+    height:30px;
+}
+.xuanxiang{
+    float:left;
+    font-size: 16px;
+    font-family: 楷体;
+    width:255px;
+    height:24px;
+    position:relative;
+    left:100px;
+}
+.xuanxiang1{
+    float:left;
+    font-size: 16px;
+    font-family: 楷体;
+    width:255px;
+    height:24px;
+    position:relative;
+    left:400px;
+}
+</style>
+</head>
+<body class="sidebar-fixed header-fixed">
+<div class="page-wrapper">
+    <nav class="navbar page-header">
+        <a href="#" class="btn btn-link sidebar-mobile-toggle d-md-none mr-auto">
+            <i class="fa fa-bars"></i>
+        </a>
+
+        <a class="navbar-brand" href="#">
+            <img src="./imgs/logo.png" alt="logo">
+        </a>
+
+        <a href="#" class="btn btn-link sidebar-toggle d-md-down-none">
+            <i class="fa fa-bars"></i>
+        </a>
+
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item d-md-down-none">
+                <div class="dropdown">
+                    <button class="dropbtn">植物选单</button>
+                    <div class="dropdown-content">
+                        <a href="#" class="aa">玉米</a>
+                        <a href="#" class="bb">番茄</a>
+                        <a href="#" class="cc">白菜</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="./imgs/avatar-1.png" class="avatar avatar-sm" alt="logo">
+                    <span class="small ml-1 d-md-down-none">小明123</span>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right">
+                    <div class="dropdown-header">账户</div>
+
+                    <!-- <a href="blank.html" class="dropdown-item">
+                        <i class="fa fa-user"></i> 个人资料
+                    </a>
+
+                    <a href="#" class="dropdown-item">
+                        <i class="fa fa-envelope"></i> 消息
+                    </a>
+
+                    <div class="dropdown-header">设置</div>
+                    -->
+                    <a href="#" class="dropdown-item">
+                        <i class="fa fa-bell"></i> 通知
+                    </a>
+
+                    <!-- <a href="invoice.html" class="dropdown-item">
+                        <i class="fa fa-wrench"></i> 个人设置
+                    </a> -->
+
+                    <a href="#" class="dropdown-item">
+                        <i class="fa fa-lock"></i> 注销
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+   <div class="main-container">
+        <div class="sidebar">
+            <nav class="sidebar-nav">
+                <ul class="nav">
+                    <li class="nav-title">导航栏</li>
+
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">
+                            <i class="icon icon-speedometer"></i> 综合数据
+                        </a>
+                    </li>
+
+                    <li class="nav-item nav-dropdown">
+                        <a href="#" class="nav-link nav-dropdown-toggle">
+                            <i class="icon icon-energy"></i> 植物管理 <i class="fa fa-caret-left"></i>
+                        </a>
+
+                        <ul class="nav-dropdown-items">
+                            <li class="nav-item">
+                                <a href="chartjs.html" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-energy"></i> 植物简介
+                                </a>
+                            </li>
+
+                            <!-- <li class="nav-item">
+                                <a href="alerts.html" class="nav-link">
+                                    <i class="icon icon-energy"></i> 影像展示 
+                                </a>
+                            </li> -->
+
+                            <li class="nav-item">
+                                <a href="buttons.html" class="nav-link active">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-energy"></i> 智能调节
+                                </a>
+                            </li>
+
+                            <!-- <li class="nav-item">
+                                <a href="cards.html" class="nav-link">
+                                    <i class="icon icon-energy"></i> 智能光控
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="modals.html" class="nav-link">
+                                    <i class="icon icon-energy"></i> 智能温控
+                                </a>
+                            </li> -->
+
+                            <li class="nav-item">
+                                <a href="tabs.html" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-energy"></i> 实时监控
+                                </a>
+                            </li>
+
+<!--                             <li class="nav-item">
+                                <a href="progress-bars.html" class="nav-link">
+                                    <i class="icon icon-energy"></i> 人工管理
+                                </a>
+                            </li> -->
+                        </ul>
+                    </li>
+
+                    <li class="nav-item nav-dropdown">
+                        <a href="#" class="nav-link nav-dropdown-toggle">
+                            <i class="icon icon-puzzle"></i> 系统设置 <i class="fa fa-caret-left"></i>
+                        </a>
+
+                        <ul class="nav-dropdown-items">
+
+                            <li class="nav-item">
+                                <a href="pepei.html" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-puzzle"></i> 箱子匹配
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="settings.html" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-puzzle"></i> 联系我们
+                                </a>
+                            </li>
+
+                            <!-- <li class="nav-item">
+                                <a href="zhiwuzhonglei.html" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-puzzle"></i> 植物种类
+                                </a>
+                            </li> -->
+                        </ul>
+                    </li>
+
+                    <li class="nav-item nav-dropdown">
+                        <a href="#" class="nav-link nav-dropdown-toggle">
+                            <i class="icon icon-umbrella"></i> 个人主页 <i class="fa fa-caret-left"></i>
+                        </a>
+
+                        <ul class="nav-dropdown-items">
+
+                            <!-- <li class="nav-item">
+                                <a href="login.html" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-umbrella"></i> 登录
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="register.html" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-umbrella"></i> 注册
+                                </a>
+                            </li> -->
+
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-umbrella"></i> 通知
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="blank.html" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-umbrella"></i> 个人资料
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="user.html" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-umbrella"></i> 切换用户
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+<div class="content">
+    <div class="row">
+      <div class="card">
+        <div class="card-body">                  
+          <div id="main" style="width:1000px;height:400px;"></div>
+        </div>
+     </div>
+    </div>
+      <div class="xuanzhe">
+        <div class="xuanxiang">
+            <input type="checkbox" name="box">温度
+            <input type="checkbox" name="box">湿度
+            <input type="checkbox" name="box">光照
+            <input id="all" type="checkbox" onclick="checkall(this)">全选
+        </div>
+        <div class="xuanxiang1">
+            <input type="checkbox" name="box1">温度
+            <input type="checkbox" name="box1">湿度
+            <input type="checkbox" name="box1">光照
+            <input id="all2" type="checkbox" onclick="checkall(this)">全选
+        </div>
+      </div>
+    <div class="anniu">
+       <!-- <a href="zhi.html"> -->
+          <button name="" class="b1 button button1">智能调节</button>
+       <!-- </a> -->
+       <!-- <a href="ren.html"> -->
+         <button name="" class="b2 button button2" data-toggle="modal" data-target="#myModal">人工调节</button>
+       <!-- </a> --> 
+    </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+   <div class="modal-body">
+    <form method="post" action="">
+        <div class="form-group">
+            <label for="exampleInputEmail1">温度调节</label>
+            <input name="wendu" type="text" class="form-control" id="exampleInputEmail1" placeholder="请输入要调节的温度(如：30)">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">湿度调节</label>
+            <input name="shidu" type="text" class="form-control" id="exampleInputPassword1" placeholder="请输入要调节的湿度(如：20)">
+        </div>
+    </form>
+   </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-default" data-dismiss="modal">关闭</button>
+        <button type="submit" class="btn btn-primary">确认</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script type="text/javascript" src="/static/javascript/jQuery.js"></script>
+<script type="text/javascript" src="/static/javascript/jqplot.js"></script>
+<script src="/static/javascript/gg_bd_ad_720x90.js" type="text/javascript"></script>
+<script src="/static/javascript/follow.js" type="text/javascript"></script>
+<script src="/static/javascript/jquery.min.js"></script>
+<script src="/static/javascript/popper.min.js"></script>
+<script src="/static/javascript/bootstrap.min.js"></script>
+<script src="/static/javascript/chart.min.js"></script>
+<script src="/static/javascript/carbon.js"></script>
+<script src="/static/javascript/demo.js"></script>
+<script src="/static/javascript/echarts.min.js"></script>
+<!-- <script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript" src="jqplot.js"></script>
+<script type="text/javascript">
+    var data1 = [[1,2,3,4,5,6,7,8,9],[3,6,8,1,11,22,4,21,6]];
+    var data_max1 = 30; //Y轴最大刻度
+    var line_title1 = ["A实际数据","B理想数据"]; //曲线名称
+    var y_label1 = "综合数据"; //Y轴标题
+    var x_label1 = "时间"; //X轴标题
+    var x = [1,2,3,4,5,6,7,8,9]; //定义X轴刻度值
+    var title1 = "温度湿度光控统计图"; //统计图标标题
+    j.jqplot.diagram.base("chart1", data1, line_title1, "温度湿度光控统计图", x, x_label1, y_label1, data_max1, 1);
+</script> -->
+<script type="text/javascript">
+    var mychart = echarts.init(document.getElementById('main'));
+    var option = {
+            title: {
+                text: '温度湿度光控统计图'
+            },
+            tooltip: {},
+            legend: {
+                data:['实际-温度','实际-湿度','实际-光照','理想-温度','理想-湿度','理想-光照']
+            },
+            xAxis: {
+                data: [10,15,20,25,30,35,40,45,50,55,60]
+            },
+            yAxis: {},
+            series: [{
+                name: '实际-温度',
+                type: 'bar',
+                data: [12,13,26,20,13,30,41,11,29,19,6]
+            },
+            {
+                name: '实际-湿度',
+                type: 'bar',
+                data: [10,2,54,23,16,10,32,3,41,14,25]
+            },
+            {
+                name: '实际-光照',
+                type: 'bar',
+                data: [22,32,12,45,54,46,14,17,27,19,15]
+            },
+            {
+                name: '理想-温度',
+                type: 'bar',
+                data: [13,18,36,29,31,22,3,24,33,16,18]
+            },
+            {
+                name: '理想-湿度',
+                type: 'bar',
+                data: [13,21,31,14,16,50,10,31,21,10,15]
+            },
+            {
+                name: '理想-光照',
+                type: 'bar',
+                data: [3,12,6,16,11,4,20,14,22,10,13]
+            }
+          ]
+        };
+    mychart.setOption(option);
+</script>
+<script type="text/javascript">
+    $(function(){
+          //给全选的复选框添加事件
+          $("#all").click(function(){
+              // this 全选的复选框
+              var userids=this.checked;
+              //获取name=box的复选框 遍历输出复选框
+              $("input[name=box]").each(function(){
+                  this.checked=userids;
+              });
+          });
+          
+          //给name=box的复选框绑定单击事件
+          $("input[name=box]").click(function(){
+              //获取选中复选框长度
+              var length=$("input[name=box]:checked").length;
+              //未选中的长度
+              var len=$("input[name=box]").length;
+              if(length==len){
+                  $("#all").get(0).checked=true;
+              }else{
+                  $("#all").get(0).checked=false;
+              }
+          });
+      });
+    $(function(){
+          //给全选的复选框添加事件
+          $("#all2").click(function(){
+              // this 全选的复选框
+              var userids=this.checked;
+              //获取name=box的复选框 遍历输出复选框
+              $("input[name=box1]").each(function(){
+                  this.checked=userids;
+              });
+          });
+          
+          //给name=box的复选框绑定单击事件
+          $("input[name=box1]").click(function(){
+              //获取选中复选框长度
+              var length=$("input[name=box1]:checked").length;
+              //未选中的长度
+              var len=$("input[name=box1]").length;
+              if(length==len){
+                  $("#all2").get(0).checked=true;
+              }else{
+                  $("#all2").get(0).checked=false;
+              }
+          });
+      });
+</script>
+</body>
+</html>
+

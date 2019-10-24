@@ -1,0 +1,127 @@
+<!doctype html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>welcome 智能花园！</title>
+    <link rel="stylesheet" href="{% static 'style/simple-line-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'style/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'style/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'style/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'style/bootstrapValidator.min.css' %}">
+    <script src="{% static 'javascript/jquery-1.10.1.js' %}"></script>
+{#    <link rel="stylesheet" href="./vendor/simple-line-icons/css/simple-line-icons.css">#}
+{#    <link rel="stylesheet" href="./vendor/font-awesome/css/fontawesome-all.min.css">#}
+{#    <link rel="stylesheet" href="./css/styles.css">#}
+{#     <link rel="stylesheet" href="./bootstrap-3.3.7-dist/css/bootstrap.min.css">#}
+{#    <link rel="stylesheet" href="./bootstrapvalidator-master/dist/css/bootstrapValidator.min.css">#}
+{#    <script src="./js/jquery-1.10.1.js"></script>#}
+    <style>
+        .beijingtu{background-image:url("/static/image/1.jpg");}
+        .touming{opacity: 0.8}
+    </style>
+</head>
+<body>
+<div class="page-wrapper flex-row align-items-center beijingtu">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <div class="card p-4 touming">
+                    <div class="card-header text-center text-uppercase h4 font-weight-light">
+                        注册
+                    </div>
+                <form method="post" action="">
+                    {% csrf_token %}
+                    <div class="card-body py-5">
+                        <div class="form-group">
+                            <label class="form-control-label">用户名</label>
+                            <input name="username" type="name" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-control-label">邮箱</label>
+                            <input name="email" type="email" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-control-label">密码</label>
+                            <input name="password" type="password" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-control-label">确认密码</label>
+                            <input name="reviewpassword" type="password" class="form-control">
+                        </div>
+                    </div>
+                    <span>{{ message }}</span>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-success btn-block">创建用户</button>
+                    </div>
+                </form>
+                    <div class="card-footer">
+                            <a href="http://127.0.0.1:8000/login">
+                                <button type="" class="btn btn-success btn-block">已有用户</button>
+                            </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $('form').bootstrapValidator({
+            message: 'This value is not valid',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                password: {
+                    message: '密码验证失败',
+                    validators: {
+                        notEmpty: {
+                            message: '密码不能为空'
+                        },
+                        stringLength: {
+                            min: 6,
+                            max: 18,
+                            message: '密码长度必须在6到18位之间'
+                        },
+                        regexp: {
+                            regexp: /^[a-zA-Z0-9_]+$/,
+                            message: '密码只能包含大写、小写、数字和下划线'
+                        }
+                    }
+                },
+                yonghu: {
+                    validators: {
+                        notEmpty: {
+                            message: '邮箱不能为空'
+                        },
+                        emailAddress: {
+                            message: '邮箱地址格式有误'
+                        }
+                    }
+                }
+            },
+</script>
+<script src={% static 'javascript/jquery.min.js' %}></script>
+<script src={% static 'javascript/popper.min.js' %}></script>
+<script src={% static 'javascript/bootstrap.min.js' %}></script>
+<script src={% static 'javascript/bootstrapValidator.min.js' %}></script>
+<script src={% static 'javascript/chart.min.js' %}></script>
+<script src={% static 'javascript/carbon.js' %}></script>
+<script src={% static 'javascript/demo.js' %}></script>
+{#<script src="./vendor/jquery/jquery.min.js"></script>#}
+{#<script src="./vendor/popper.js/popper.min.js"></script>#}
+{#<script src="./vendor/bootstrap/js/bootstrap.min.js"></script>#}
+{#<script src="./bootstrapvalidator-master/dist/js/bootstrapValidator.min.js"></script>#}
+{#<script src="./vendor/chart.js/chart.min.js"></script>#}
+{#<script src="./js/carbon.js"></script>#}
+{#<script src="./js/demo.js"></script>#}
+</body>
+</html>

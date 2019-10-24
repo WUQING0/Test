@@ -1,0 +1,550 @@
+<!doctype html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>welcome 智能花园！</title>
+    <link rel="stylesheet" href="{% static 'style/simple-line-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'style/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'style/styles.css' %}">
+    <link rel="shortcut icon" href="{% static 'style/' %}" type="image/x-icon" />
+    <link rel="stylesheet" href="{% static 'style/font.css' %}">
+    <link rel="stylesheet" href="{% static 'style/xadmin.css' %}">
+    <link rel="stylesheet" href="{% static 'style/layui.css' %}">
+    <script src="{% static 'javascript/jquery.min.js' %}"></script>
+    <script src="{% static 'javascript/' %}"></script>
+    <script src="{% static 'javascript/' %}"></script>
+    <script src="{% static 'javascript/' %}"></script>
+{#    <link rel="stylesheet" href="./vendor/simple-line-icons/css/simple-line-icons.css">#}
+{#    <link rel="stylesheet" href="./vendor/font-awesome/css/fontawesome-all.min.css">#}
+{#    <link rel="stylesheet" href="./css/styles.css">#}
+{#    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />#}
+{#    <link rel="stylesheet" href="./css/font.css">#}
+{#    <link rel="stylesheet" href="./css/xadmin.css">#}
+{#     <link rel="stylesheet" href="./layui/css/layui.css">#}
+{#    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>#}
+{#    <script type="text/javascript" src="./lib/layui/layui.js" charset="utf-8"></script>#}
+{#    <script type="text/javascript" src="./js/xadmin.js"></script>#}
+{#    <script type="text/javascript" src="./layui/layui.js"></script>#}
+        <style>
+         /* 下拉按钮样式 */
+        .dropbtn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            margin:10px;
+            font-size: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+         /* 容器 <div> - 需要定位下拉内容 */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+         /* 下拉内容 (默认隐藏) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        }
+
+         /* 下拉菜单的链接 */
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+         /* 鼠标移上去后修改下拉菜单链接颜色 */
+        .dropdown-content a:hover {background-color: red;}
+
+         /* 在鼠标移上去后显示下拉菜单 */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+         /* 当下拉内容显示后修改下拉按钮的背景颜色 */
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
+        }
+        .bb{
+            background-color:red;
+        }
+    </style>
+
+</head>
+
+<body class="sidebar-fixed header-fixed" >
+<div class="page-wrapper">
+    <nav class="navbar page-header">
+        <a href="http://127.0.0.1:8000/#" class="btn btn-link sidebar-mobile-toggle d-md-none mr-auto">
+            <i class="fa fa-bars"></i>
+        </a>
+
+        <a class="navbar-brand" href="#">
+            <img src="{% static 'image/logo.png'%}" alt="logo">
+        </a>
+
+            <a href="http://127.0.0.1:8000/#" class="btn btn-link sidebar-toggle d-md-down-none" id="first">
+            ==
+        </a>
+
+
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item d-md-down-none">
+                  <div class="dropdown">
+                    <button class="dropbtn">植物选单</button>
+                    <div class="dropdown-content">
+                        <a href="http://127.0.0.1:8000/#" class="aa">玉米</a>
+                        <a href="http://127.0.0.1:8000/#" class="bb">番茄</a>
+                        <a href="http://127.0.0.1:8000/#" class="cc">白菜</a>
+                    </div>
+                </div>
+
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="{% static 'image/avatar-1.png'%}" class="avatar avatar-sm" alt="logo">
+                    <span class="small ml-1 d-md-down-none">{{user}}</span>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right">
+                    <div class="dropdown-header">账户</div>
+
+                    <!-- <a href="http://127.0.0.1:8000/blank" class="dropdown-item">
+                        <i class="fa fa-user"></i> 个人资料
+                    </a>
+
+                    <a href="http://127.0.0.1:8000/#" class="dropdown-item">
+                        <i class="fa fa-envelope"></i> 消息
+                    </a>
+
+                    <div class="dropdown-header">设置</div> -->
+
+                    <a href="http://127.0.0.1:8000/#" class="dropdown-item">
+                        <i class="fa fa-bell"></i> 通知
+                    </a>
+
+                    <!-- <a href="http://127.0.0.1:8000/invoice" class="dropdown-item">
+                        <i class="fa fa-wrench"></i> 个人设置
+                    </a> -->
+
+                    <a href="http://127.0.0.1:8000/#" class="dropdown-item">
+                        <i class="fa fa-lock"></i> 注销
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+<div class="main-container">
+        <div class="sidebar">
+            <nav class="sidebar-nav">
+                <ul class="nav">
+                    <li class="nav-title">导航栏</li>
+
+                    <li class="nav-item">
+                       <a href="http://127.0.0.1:8000/index" class="nav-link active">
+                            <i class="icon icon-speedometer"></i> 综合数据
+                        </a>
+                    </li>
+
+                    <li class="nav-item nav-dropdown">
+                       <a href="http://127.0.0.1:8000/#" class="nav-link nav-dropdown-toggle">
+                            <i class="icon icon-energy"></i> 植物管理 <i class="fa fa-caret-left"></i>
+                        </a>
+
+                        <ul class="nav-dropdown-items">
+                            <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/chartjs" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-energy"></i> 植物简介
+                                </a>
+                            </li>
+
+                           <!--  <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/alerts" class="nav-link">
+                                    <i class="icon icon-energy"></i> 影像展示
+                                </a>
+                            </li> -->
+
+                            <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/buttons" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-energy"></i> 智能调节
+                                </a>
+                            </li>
+
+                            <!-- <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/cards" class="nav-link">
+                                    <i class="icon icon-energy"></i> 智能光控
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/modals" class="nav-link">
+                                    <i class="icon icon-energy"></i> 智能温控
+                                </a>
+                            </li> -->
+
+                            <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/tabs" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-energy"></i> 实时监控
+                                </a>
+                            </li>
+
+                            <!-- <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/progress-bars" class="nav-link">
+                                    <i class="icon icon-energy"></i> 人工管理
+                                </a>
+                            </li> -->
+                        </ul>
+                    </li>
+
+                    <li class="nav-item nav-dropdown">
+                       <a href="http://127.0.0.1:8000/#" class="nav-link nav-dropdown-toggle">
+                            <i class="icon icon-puzzle"></i> 系统设置 <i class="fa fa-caret-left"></i>
+                        </a>
+
+                        <ul class="nav-dropdown-items">
+
+                            <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/pepei" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-puzzle"></i> 箱子匹配
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/settings" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-puzzle"></i> 联系我们
+                                </a>
+                            </li>
+
+                            <!-- <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/zhiwuzhonglei" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-puzzle"></i> 植物种类
+                                </a>
+                            </li> -->
+                        </ul>
+                    </li>
+
+                    <!-- <li class="nav-item">
+                       <a href="http://127.0.0.1:8000/#" class="nav-link">
+                            <i class="icon icon-grid"></i> 个人设置
+                        </a>
+                    </li>
+
+                    <li class="nav-title">更多</li> -->
+
+                    <li class="nav-item nav-dropdown">
+                       <a href="http://127.0.0.1:8000/#" class="nav-link nav-dropdown-toggle">
+                            <i class="icon icon-umbrella"></i> 个人主页 <i class="fa fa-caret-left"></i>
+                        </a>
+
+                        <ul class="nav-dropdown-items">
+
+                           <!--  <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/login" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-umbrella"></i> 登录
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/register" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-umbrella"></i> 注册
+                                </a>
+                            </li> -->
+                            <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/#" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-umbrella"></i> 通知
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/blank" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-umbrella"></i> 个人资料
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/user" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-umbrella"></i> 切换用户
+                                </a>
+                            </li>
+
+                            <!-- <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/invoice" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-umbrella"></i> 个人设置
+                                </a>
+                            </li> -->
+
+                            <!-- <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/settings" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-umbrella"></i> 联系我们
+                                </a>
+                            </li> -->
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="content">
+         <div class="x-body">
+      <div class="layui-row">
+      </div>
+      <xblock>
+        <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
+        <button class="layui-btn" onclick="x_admin_show('添加用户','./member-add.html',600,400)"><i class="layui-icon"></i>添加</button>
+      </xblock>
+      <table class="layui-table x-admin">
+        <thead>
+          <tr>
+            <th>
+              <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
+            </th>
+            <th>ID</th>
+            <th>用户名</th>
+            <th>性别</th>
+            <th>试验箱</th>
+            <th>植物种类</th>
+            <th>加入时间</th>
+            <th>状态</th>
+            <th>操作</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
+            </td>
+            <td>1</td>
+            <td>{{user}}</td>
+            <td>男</td>
+            <td>试验箱1</td>
+            <td>玉米</td>
+            <td>2017-01-01 11:11:42</td>
+            <td class="td-status">
+              <span class="layui-btn layui-btn-normal layui-btn-mini">已启用</span></td>
+            <td class="td-manage">
+              <a onclick="member_stop(this,'10001')" href="javascript:;"  title="启用">
+                <i class="layui-icon">&#xe601;</i>
+              </a>
+              <a title="编辑"  onclick="x_admin_show('编辑','member-edit.html',600,400)" href="javascript:;">
+                <i class="layui-icon">&#xe642;</i>
+              </a>
+              <a onclick="x_admin_show('修改密码','member-password.html',600,400)" title="修改密码" href="javascript:;">
+                <i class="layui-icon">&#xe631;</i>
+              </a>
+              <a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">
+                <i class="layui-icon">&#xe640;</i>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
+            </td>
+            <td>1</td>
+            <td>{{user}}</td>
+            <td>男</td>
+            <td>试验箱2</td>
+            <td>番茄</td>
+            <td>2017-01-01 11:11:42</td>
+            <td class="td-status">
+              <span class="layui-btn layui-btn-normal layui-btn-mini">已启用</span></td>
+            <td class="td-manage">
+              <a onclick="member_stop(this,'10001')" href="javascript:;"  title="启用">
+                <i class="layui-icon">&#xe601;</i>
+              </a>
+              <a title="编辑"  onclick="x_admin_show('编辑','member-edit.html',600,400)" href="javascript:;">
+                <i class="layui-icon">&#xe642;</i>
+              </a>
+              <a onclick="x_admin_show('修改密码','member-password.html',600,400)" title="修改密码" href="javascript:;">
+                <i class="layui-icon">&#xe631;</i>
+              </a>
+              <a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">
+                <i class="layui-icon">&#xe640;</i>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
+            </td>
+            <td>1</td>
+            <td>{{user}}</td>
+            <td>男</td>
+            <td>试验箱3</td>
+            <td>白菜</td>
+            <td>2017-01-01 11:11:42</td>
+            <td class="td-status">
+              <span class="layui-btn layui-btn-normal layui-btn-mini">已启用</span></td>
+            <td class="td-manage">
+              <a onclick="member_stop(this,'10001')" href="javascript:;"  title="启用">
+                <i class="layui-icon">&#xe601;</i>
+              </a>
+              <a title="编辑"  onclick="x_admin_show('编辑','member-edit.html',600,400)" href="javascript:;">
+                <i class="layui-icon">&#xe642;</i>
+              </a>
+              <a onclick="x_admin_show('修改密码','member-password.html',600,400)" title="修改密码" href="javascript:;">
+                <i class="layui-icon">&#xe631;</i>
+              </a>
+              <a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">
+                <i class="layui-icon">&#xe640;</i>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
+            </td>
+            <td>1</td>
+            <td>{{user}}</td>
+            <td>男</td>
+            <td>试验箱4</td>
+            <td>豆芽</td>
+            <td>2017-01-01 11:11:42</td>
+            <td class="td-status">
+              <span class="layui-btn layui-btn-normal layui-btn-mini">已启用</span></td>
+            <td class="td-manage">
+              <a onclick="member_stop(this,'10001')" href="javascript:;"  title="启用">
+                <i class="layui-icon">&#xe601;</i>
+              </a>
+              <a title="编辑"  onclick="x_admin_show('编辑','member-edit.html',600,400)" href="javascript:;">
+                <i class="layui-icon">&#xe642;</i>
+              </a>
+              <a onclick="x_admin_show('修改密码','member-password.html',600,400)" title="修改密码" href="javascript:;">
+                <i class="layui-icon">&#xe631;</i>
+              </a>
+              <a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">
+                <i class="layui-icon">&#xe640;</i>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
+            </td>
+            <td>1</td>
+            <td>{{user}}</td>
+            <td>男</td>
+            <td>试验箱5</td>
+            <td>菠菜</td>
+            <td>2017-01-01 11:11:42</td>
+            <td class="td-status">
+              <span class="layui-btn layui-btn-normal layui-btn-mini">已启用</span></td>
+            <td class="td-manage">
+              <a onclick="member_stop(this,'10001')" href="javascript:;"  title="启用">
+                <i class="layui-icon">&#xe601;</i>
+              </a>
+              <a title="编辑"  onclick="x_admin_show('编辑','member-edit.html',600,400)" href="javascript:;">
+                <i class="layui-icon">&#xe642;</i>
+              </a>
+              <a onclick="x_admin_show('修改密码','member-password.html',600,400)" title="修改密码" href="javascript:;">
+                <i class="layui-icon">&#xe631;</i>
+              </a>
+              <a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">
+                <i class="layui-icon">&#xe640;</i>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
+            </td>
+            <td>1</td>
+            <td>{{user}}</td>
+            <td>男</td>
+            <td>试验箱6</td>
+            <td>玉米</td>
+            <td>2017-01-01 11:11:42</td>
+            <td class="td-status">
+              <span class="layui-btn layui-btn-normal layui-btn-mini">已启用</span></td>
+            <td class="td-manage">
+              <a onclick="member_stop(this,'10001')" href="javascript:;"  title="启用">
+                <i class="layui-icon">&#xe601;</i>
+              </a>
+              <a title="编辑"  onclick="x_admin_show('编辑','member-edit.html',600,400)" href="javascript:;">
+                <i class="layui-icon">&#xe642;</i>
+              </a>
+              <a onclick="x_admin_show('修改密码','member-password.html',600,400)" title="修改密码" href="javascript:;">
+                <i class="layui-icon">&#xe631;</i>
+              </a>
+              <a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">
+                <i class="layui-icon">&#xe640;</i>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
+            </td>
+            <td>1</td>
+            <td>{{user}}</td>
+            <td>男</td>
+            <td>试验箱7</td>
+            <td>水稻</td>
+            <td>2017-01-01 11:11:42</td>
+            <td class="td-status">
+              <span class="layui-btn layui-btn-normal layui-btn-mini">已启用</span></td>
+            <td class="td-manage">
+              <a onclick="member_stop(this,'10001')" href="javascript:;"  title="启用">
+                <i class="layui-icon">&#xe601;</i>
+              </a>
+              <a title="编辑"  onclick="x_admin_show('编辑','member-edit.html',600,400)" href="javascript:;">
+                <i class="layui-icon">&#xe642;</i>
+              </a>
+              <a onclick="x_admin_show('修改密码','member-password.html',600,400)" title="修改密码" href="javascript:;">
+                <i class="layui-icon">&#xe631;</i>
+              </a>
+              <a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">
+                <i class="layui-icon">&#xe640;</i>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
+            </td>
+            <td>1</td>
+            <td>{{user}}</td>
+            <td>男</td>
+            <td>试验箱8</td>
+            <td>香菜</td>
+            <td>2017-01-01 11:11:42</td>
+            <td class="td-status">
+              <span class="layui-btn layui-btn-normal layui-btn-mini">已启用</span></td>
+            <td class="td-manage">
+              <a onclick="member_stop(this,'10001')" href="javascript:;"  title="启用">
+                <i class="layui-icon">&#xe601;</i>
+              </a>
+              <a title="编辑"  onclick="x_admin_show('编辑','member-edit.html',600,400)" href="javascript:;">
+                <i class="layui-icon">&#xe642;</i>
+              </a>
+              <a onclick="x_admin_show('修改密码','member-password.html',600,400)" title="修改密码" href="javascript:;">
+                <i class="layui-icon">&#xe631;</i>
+              </a>
+              <a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">
+                <i class="layui-icon">&#xe640;</i>
+              </a>
+            </td>
+          </tr>
+    </div>
+</div>
+<script src={% static 'javascript/jquery.min.js' %}></script>
+<script src={% static 'javascript/popper.min.js' %}></script>
+<script src={% static 'javascript/bootstrap.min.js' %}></script>
+<script src={% static 'javascript/bootstrapValidator.min.js' %}></script>
+<script src={% static 'javascript/chart.min.js' %}></script>
+<script src={% static 'javascript/carbon.js' %}></script>
+<script src={% static 'javascript/demo.js' %}></script>
+
+</body>
+</html>

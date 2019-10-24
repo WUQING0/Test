@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="en">
+{% load staticfiles %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>welcome 智能花园！</title>
+    <link rel="stylesheet" href="{% static 'style/simple-line-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'style/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'style/styles.css' %}">
+     <style type="text/css">  
+         .a{
+            margin:8px;
+         }
+
+         .dropbtn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            margin:10px;
+            font-size: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+         /* 容器 <div> - 需要定位下拉内容 */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+         /* 下拉内容 (默认隐藏) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        }
+
+         /* 下拉菜单的链接 */
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+         /* 鼠标移上去后修改下拉菜单链接颜色 */
+        .dropdown-content a:hover {background-color: red;}
+
+         /* 在鼠标移上去后显示下拉菜单 */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+         /* 当下拉内容显示后修改下拉按钮的背景颜色 */
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
+        }
+        .aa{
+            background-color:white;
+        }
+    </style> 
+   <style type="text/css">
+    * {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      border: 0;
+    }
+    #box{
+        position: absolute;
+        right: 50px;
+        top:100px
+    }
+    .all {
+      width: 500px;
+      height: 400px;
+      padding: 7px;
+      border: 1px solid #ccc;
+      margin: 100px auto;
+      position: relative;
+    }
+
+    .screen {
+      width: 483px;
+      height: 400px;
+      margin-top: -5px;
+      margin-left: 0px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .screen li {
+      width: 500px;
+      height: 400px;
+      overflow: hidden;
+      float: left;
+    }
+
+    .screen ul {
+      position: absolute;
+      left: 0;
+      top: 0px;
+      width: 3000px;
+    }
+
+    .all ol {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      line-height: 20px;
+      text-align: center;
+    }
+
+    .all ol li {
+      float: left;
+      width: 20px;
+      height: 20px;
+      background: #fff;
+      border: 1px solid #ccc;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    .all ol li.current {
+      background: #DB192A;
+    }
+
+    #arr {
+      display: none;
+    }
+
+    #arr span {
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      left: 5px;
+      top: 50%;
+      margin-top: -20px;
+      background: #000;
+      cursor: pointer;
+      line-height: 40px;
+      text-align: center;
+      font-weight: bold;
+      font-family: '黑体';
+      font-size: 30px;
+      color: #fff;
+      opacity: 0.3;
+      border: 1px solid #fff;
+    }
+
+    #arr #right {
+      right: 5px;
+      left: auto;
+    }
+  </style>
+ <style>
+    p{color:seagreen; }
+   h1{color:midnightblue;}
+   #mul{
+        display:block;
+        margin:10px;}
+ </style>
+</head>
+<body class="sidebar-fixed header-fixed" >
+<div class="page-wrapper">
+    <nav class="navbar page-header">
+       <a href="#" class="btn btn-link sidebar-mobile-toggle d-md-none mr-auto">
+            <i class="fa fa-bars"></i>
+        </a>
+
+        <a class="navbar-brand" href="#">
+            <img src="{% static 'image/logo.png'%}" alt="logo">
+        </a>
+
+          <a href="http://127.0.0.1:8000/#" class="btn btn-link sidebar-toggle d-md-down-none" id="first">
+            ==
+        </a>
+
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item d-md-down-none">
+                <div class="dropdown">
+                    <button class="dropbtn">植物选单</button>
+                    <div class="dropdown-content">
+                        <ul id="lists">
+                        <li><a href="#" class="aa" id="thing_1">玉米</a></li>
+                        <li><a href="#" class="bb" id="thing_2">番茄</a></li>
+                            <li><a href="#" class="cc" id="thing_3">白菜</a></li>
+                    </ul>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="{% static 'image/avatar-1.png'%}" class="avatar avatar-sm" alt="logo">
+                    <span class="small ml-1 d-md-down-none">{{user}}</span>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right">
+                    <div class="dropdown-header">账户</div>
+
+                    <!--<a href="#" class="dropdown-item">
+                        <i class="fa fa-user"></i> 个人资料
+                    </a>
+
+                   <a href="#" class="dropdown-item">
+                        <i class="fa fa-envelope"></i> 消息
+                    </a>
+
+                    <div class="dropdown-header">设置</div> -->
+
+                   <a href="#" class="dropdown-item">
+                        <i class="fa fa-bell"></i> 通知
+                    </a>
+
+                    <!--<a href="#" class="dropdown-item">
+                        <i class="fa fa-wrench"></i> 个人设置
+                    </a> -->
+
+                   <a href="#" class="dropdown-item">
+                        <i class="fa fa-lock"></i> 注销
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="main-container">
+        <div class="sidebar">
+            <nav class="sidebar-nav">
+                <ul class="nav">
+                    <li class="nav-title">导航栏</li>
+
+                    <li class="nav-item">
+                       <a href="http://127.0.0.1:8000/index" class="nav-link active">
+                            <i class="icon icon-speedometer"></i> 综合数据
+                        </a>
+                    </li>
+
+                    <li class="nav-item nav-dropdown">
+                       <a href="#" class="nav-link nav-dropdown-toggle">
+                            <i class="icon icon-energy"></i> 植物管理 <i class="fa fa-caret-left"></i>
+                        </a>
+
+                        <ul class="nav-dropdown-items">
+                            <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/chartjs" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-energy"></i> 植物简介
+                                </a>
+                            </li>
+
+                           <!--  <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/alerts" class="nav-link">
+                                    <i class="icon icon-energy"></i> 影像展示
+                                </a>
+                            </li> -->
+
+                            <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/buttons" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-energy"></i> 智能调节
+                                </a>
+                            </li>
+
+                            <!-- <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/cards" class="nav-link">
+                                    <i class="icon icon-energy"></i> 智能光控
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/modals" class="nav-link">
+                                    <i class="icon icon-energy"></i> 智能温控
+                                </a>
+                            </li> -->
+
+                            <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/tabs" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-energy"></i> 实时监控
+                                </a>
+                            </li>
+
+                            <!-- <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/progress-bars" class="nav-link">
+                                    <i class="icon icon-energy"></i> 人工管理
+                                </a>
+                            </li> -->
+                        </ul>
+                    </li>
+
+                    <li class="nav-item nav-dropdown">
+                       <a href="#" class="nav-link nav-dropdown-toggle">
+                            <i class="icon icon-puzzle"></i> 系统设置 <i class="fa fa-caret-left"></i>
+                        </a>
+
+                        <ul class="nav-dropdown-items">
+
+                            <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/pepei" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-puzzle"></i> 箱子匹配
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/settings" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-puzzle"></i> 联系我们
+                                </a>
+                            </li>
+
+                            <!-- <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/zhiwuzhonglei" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-puzzle"></i> 植物种类
+                                </a>
+                            </li> -->
+                        </ul>
+                    </li>
+
+                    <!-- <li class="nav-item">
+                       <a href="#" class="nav-link">
+                            <i class="icon icon-grid"></i> 个人设置
+                        </a>
+                    </li>
+
+                    <li class="nav-title">更多</li> -->
+
+                    <li class="nav-item nav-dropdown">
+                       <a href="#" class="nav-link nav-dropdown-toggle">
+                            <i class="icon icon-umbrella"></i> 个人主页 <i class="fa fa-caret-left"></i>
+                        </a>
+
+                        <ul class="nav-dropdown-items">
+
+                           <!--  <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/login" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-umbrella"></i> 登录
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/register" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-umbrella"></i> 注册
+                                </a>
+                            </li> -->
+                            <li class="nav-item">
+                               <a href="#" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-umbrella"></i> 通知
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/blank" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-umbrella"></i> 个人资料
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/user" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-umbrella"></i> 切换用户
+                                </a>
+                            </li>
+
+                            <!-- <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/invoice" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-umbrella"></i> 个人设置
+                                </a>
+                            </li> -->
+
+                            <!-- <li class="nav-item">
+                               <a href="http://127.0.0.1:8000/settings" class="nav-link">
+                                    &nbsp&nbsp&nbsp&nbsp&nbsp<i class="icon icon-umbrella"></i> 联系我们
+                                </a>
+                            </li> -->
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+         <div class="content">
+            <!-- <div id="qq">
+        <video width="500" height="500"    controls="" id="videos">
+                    <source src="video/movie.mp4" type="video/mp4">
+                    <source  src="video/movie0.mp4" type="video/mp4">
+                    <source src="video/movie.mp4" type="video0/mp4">
+               </video></div> -->
+               <div class="col-md-6" style='width:70%;float:left;'ul id="mul">
+               <br>
+               
+                <h1 style="font-family:stkaiti" id="fruit"><b>玉米maize</h1>
+                <p style="font-family:stkaiti" ><b>
+                <font size="4" id="text_thing">
+                    玉米是一年生雌雄同株异花授粉植物， 植株高大， 茎强壮， 是重要的粮食作物和饲料作物， 也是全世界总产量最高的农作物， 其种植面积和总产量仅次于水稻和小麦。玉米一直都被誉为长寿食品， 含有丰富的蛋 白质、 脂肪、 维生素、 微量元素、 纤维素等， 具有开发高营养、 高生物学功能食品的巨大潜力。但由于其遗传性较为复杂， 变异种类丰富， 在常规的育种过程中存在着周期过长、 变异系数过大、 影响子代生长发育的缺点， 而现代生物育种技术不但克服了上述缺点和不足， 同时也提高了育种速度和质量.玉米是喜温作物，全生育期要求较高的温度。玉米生物学有效温度为10℃。种子发芽要求6—10℃，低于10℃发芽慢，16—21℃发芽旺盛，发芽最适温度为28—35℃，40℃以上停止发芽。苗期能耐短期-2-- -3℃的依温。拔节期要求15—27℃，开花期要求25—26℃，灌浆期要求20—24℃。不同玉米品种对温度的要求也不相同，我国早熟品种要求积温2000--2200℃；中熟品种2300 一2600℃；晚熟品和25OO--28OO（3000）℃。世界玉米产区多数集中在7月份等温线为21--27℃，无霜期为120—180天的范围内。玉米是短日照植物，在短日照(8--10小时)条件下可以开花结实。光谱成分对玉米的发育影响很大，据研究白天蓝色等短波光玉米发育快，而早晨或晚上以红色等长波光发育快。玉米为C4植物，具有较强的光合能力，光的饱和点高，一般玉米光合强度为35--80mgCO2/dm2·叶·小时。
+                </font>
+            </div>
+                
+            </div> 
+             
+        </div> 
+        <div class="all" id='box'>
+                <div class="screen"><!--相框-->
+                <a href="http://127.0.0.1:8000/https://www.baidu.com/"><img src="{% static 'image/g2.jpg'%}"></a>
+                </div>
+                <div id="arr"><span id="left">&lt;</span><span id="right">&gt;</span></div>
+              </div>
+              
+             
+<script src={% static 'javascript/jquery.min.js' %}></script>
+<script src={% static 'javascript/popper.min.js' %}></script>
+<script src={% static 'javascript/bootstrap.min.js' %}></script>
+{#<script src="./vendor/jquery/jquery.min.js"></script>#}
+{#<script src="./vendor/popper.js/popper.min.js"></script>#}
+{#<script src="./vendor/bootstrap/js/bootstrap.min.js"></script>#}
+{#<script src="./vendor/chart.js/chart.min.js"></script>#}
+<script src={% static 'javascript/chart.min.js' %}></script>
+<script src={% static 'javascript/carbon.js' %}></script>
+<script src={% static 'javascript/demo.js' %}></script>
+<script src="{% static 'javascript/echarts.min.js' %}"></script>
+{#<script src="./js/carbon.js"></script>#}
+{#<script src="./js/demo.js"></script>#}
+{#<script src="./bootstrapvalidator-master/dist/js/echarts.min.js"></script>#}
+<script>
+    $(function(){
+        $("#thing_1").on("click",function(){
+           $("#fruit").text("玉米maize").css({
+               fontWeight:"normal"
+           })
+           $("#text_thing").text("玉米是一年生雌雄同株异花授粉植物， 植株高大， 茎强壮， 是重要的粮食作物和饲料作物， 也是全世界总产量最高的农作物， 其种植面积和总产量仅次于水稻和小麦。玉米一直都被誉为长寿食品， 含有丰富的蛋 白质、 脂肪、 维生素、 微量元素、 纤维素等， 具有开发高营养、 高生物学功能食品的巨大潜力。但由于其遗传性较为复杂， 变异种类丰富， 在常规的育种过程中存在着周期过长、 变异系数过大、 影响子代生长发育的缺点， 而现代生物育种技术不但克服了上述缺点和不足， 同时也提高了育种速度和质量.玉米是喜温作物，全生育期要求较高的温度。玉米生物学有效温度为10℃。种子发芽要求6—10℃，低于10℃发芽慢，16—21℃发芽旺盛，发芽最适温度为28—35℃，40℃以上停止发芽。苗期能耐短期-2-- -3℃的依温。拔节期要求15—27℃，开花期要求25—26℃，灌浆期要求20—24℃。不同玉米品种对温度的要求也不相同，我国早熟品种要求积温2000--2200℃；中熟品种2300 一2600℃；晚熟品和25OO--28OO（3000）℃。世界玉米产区多数集中在7月份等温线为21--27℃，无霜期为120—180天的范围内。玉米是短日照植物，在短日照(8--10小时)条件下可以开花结实。光谱成分对玉米的发育影响很大，据研究白天蓝色等短波光玉米发育快，而早晨或晚上以红色等长波光发育快。玉米为C4植物，具有较强的光合能力，光的饱和点高，一般玉米光合强度为35--80mgCO2/dm2·叶·小时。")
+        //    $("#videos").html('<source src="video/movie.mp4" type="video/mp4"></source>' );
+           $(".screen a").attr({
+               href:"http://tv.cntv.cn/video/C10361/02f9ba2a56594f9e28ade9a72bfeb702?from=groupmessage"
+           }).children("img").attr("src","imgs/g2.jpg")
+        })
+
+    
+        $("#thing_2").on("click",function(){
+            $("#fruit").text("番茄tomato").css({
+               fontWeight:"normal"
+           })
+           $("#text_thing").text("西红柿用来消暑解渴可与西瓜媲美。然而，西红柿中维生素C的含量却大约相当于西瓜的10倍。 而且由于有有机酸的保护，在贮存和烹调过程中，它所含的维生素C又不易遭到破坏，人体利用率很高。因此，常吃西红柿，对于治疗坏血病、过敏性紫癜、感冒和促进伤口愈合，都有重要的作用。西红柿最早生长在南美洲，因色彩娇艳，人们对它十分警惕，视为“狐狸的果实”，又称狼桃，只供观赏，不敢品尝。16世纪英国一位英俊勋爵，到野外嬉花弄草，偶见这色泽鲜艳的红果，点缀在青枝绿叶中，迎风摇曳，十分美丽动人，抑制不住满怀喜悦，勇敢地采一颗献给漂亮的公主，作为求爱礼物，才得以传播。直18世纪法国一位画家到密林寻找美景写生，觉得这艳果极其可爱，心里动了跃跃欲尝的念头，便大胆摘一只吃了，不仅没发生意外，却尝出好滋味。一位厨师获此喜讯，将它烹成菜肴，宾客食之无不交口称赞。爱情果、金苹果、红宝石等美名，这就是指世界各地普遍种植的西红柿西红柿还颇得古今医家赏识，其性微寒味甘酸，生津止渴，凉血养肝，清热解毒，治疗高血压、坏血病，预防动脉硬化、肝脏病等。《陆川本草》载，西红柿 “健胃消食，治口渴、食欲不振。”高血压患者，连续半月在清晨空腹吃两个西红柿，有降压作用。以西红柿代水果每天吃2-3次，两周后治牙龈出血见效。西红柿汁与西瓜汁各半杯，混合饮服，退热止烦渴。西红柿汁与甘蔗汁或山楂汁混合饮服，治胃热、口干舌燥.")
+        //    $("#videos").html('<source src="video/movie.mp4" type="video/mp4"></source>' );
+        $(".screen a").attr({
+               href:"https://sv.baidu.com/videoui/page/videoland?pd=bjh&context={%22nid%22:%2210128485869448774726%22,%22sourceFrom%22:%22bjh%22}&fr=bjhauthor&type=video"
+           }).children("img").attr("src","imgs/fq.jpg")
+        })
+
+        $("#thing_3").on("click",function(){
+            $("#fruit").text("白菜cabbage").css({
+               fontWeight:"normal"
+           })
+           $("#text_thing").text("二年生草本，高40-60厘米，常全株无毛，有时叶下面中脉上有少数刺毛。基生叶多数，大形，倒卵状长圆形至宽倒卵形，长30-60厘米，宽不及长的一半，顶端圆钝，边缘皱缩，波状，有时具不显明牙齿，中脉白色，很宽，有多数粗壮侧脉；叶柄白色，扁平，长5-9厘米，宽2-8厘米，边缘有具缺刻的宽薄翅；上部茎生叶长圆状卵形、长圆披针形至长披针形，长2.5-7厘米，顶端圆钝至短急尖，全缘或有裂齿，有柄或抱茎，有粉霜。花鲜黄色，直径1.2-1.5厘米；花梗长4-6毫米；萼片长圆形或卵状披针形，长4-5毫米，直立，淡绿色至黄色；花瓣倒卵形，长7-8毫米，基部渐窄成爪。长角果较粗短，长3-6厘米，宽约3毫米，两侧压扁，直立，喙长4-10毫米，宽约1毫米，顶端圆；果梗开展或上升，长2.5-3厘米，较粗。种子球形，直径1-1.5毫米，棕色。花期5月，果期6月。白菜除作为蔬菜供人们食用之外，还有药用价值。祖国医学认为，白菜性味甘平，有清热除烦、解渴利尿、通利肠胃的功效，经常吃白菜可防止维生素C缺乏症（坏血病）。民间还有用白菜治感冒的验方，其方法是用白菜干根加红糖、姜片、水煎服，或用白菜根三个，大葱根七个，煎水加红糖，趁热饮服，盖被出汗，感冒即愈。大白菜洗净切碎煎浓汤，每晚睡前洗冻疮患处，连洗数日即可风效。白菜子则可解酒，对于酒醉不醒者，可用白菜子研末调“井华水”（即从水井中刚打上来的井水），服之有效。")
+           $(".screen a").attr({
+               href:"https://www.iqiyi.com/w_19s7zcd4kd"
+           }).children("img").attr("src","imgs/bc.jpg")
+        
+        })
+        $("#lists li a").children().children().children().on("click",function(){
+            $(this).css("backgroundColor","red").siblings().css("backgroundColor","white")
+        })
+        $("#lists li a").children().children().children().on("mouseover",function(){
+            $(this).css("backgroundColor","red").siblings().css("backgroundColor","white")
+        })
+    })
+
+</script>
+</body>
+</html>
